@@ -24,11 +24,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.Darkcolor,
+      backgroundColor: AppColors.BackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              'assest/logo.png',
+              width: 150,
+              height: 150,
+            ),
+
             const SizedBox(height: 20),
             const Text(
               'TRANSLATOR',
