@@ -4,13 +4,13 @@ import 'package:camera_ocr_scanner/ui/HomePage.dart';
 import 'package:camera_ocr_scanner/ui/Login.dart';
 import 'package:camera_ocr_scanner/ui/SIgnup.dart';
 import 'package:camera_ocr_scanner/ui/Splash_Screen.dart';
+import 'package:camera_ocr_scanner/ui/forgetpassword.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class AppRoutes {
   static final GlobalKey<NavigatorState> _routeNavigatorState =
-  GlobalKey<NavigatorState>();
+      GlobalKey<NavigatorState>();
 
   static final GoRouter router = GoRouter(
       navigatorKey: _routeNavigatorState,
@@ -44,6 +44,12 @@ class AppRoutes {
           path: '/camera',
           builder: (BuildContext context, GoRouterState state) {
             return Camerascreen();
+          },
+        ),
+        GoRoute(
+          path: RoutesName.forgetpass,
+          builder: (BuildContext context, GoRouterState state) {
+            return ForgotPasswordPage();
           },
         ),
       ]);

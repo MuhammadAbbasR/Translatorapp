@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:camera/camera.dart';
-import 'package:camera_ocr_scanner/ResultScreen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
@@ -137,7 +137,7 @@ class _CamerascreenState extends State<Camerascreen> with WidgetsBindingObserver
       return;
     }
 
-    // Select the first rear camera.
+
     CameraDescription? camera;
     for (var i = 0; i < cameras.length; i++) {
       final CameraDescription current = cameras[i];

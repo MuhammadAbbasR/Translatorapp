@@ -21,7 +21,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => TranslationPdfProvider()),
         ChangeNotifierProvider(create: (_) => TranslationProvider()),
         ChangeNotifierProvider(create: (_) => TranslationcameraProvider()),
-     //   ChangeNotifierProvider(create: (_) => TaskViewModel()),
+
       ],
       child: MyApp(),
     ),

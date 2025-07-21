@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:camera_ocr_scanner/view_model/translationcamera.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class CameraTranslationPage extends StatefulWidget {
 
 class _CameraTranslationPageState extends State<CameraTranslationPage> {
   String _scannedText = '';
-  String _targetLanguage = 'es';  // Example: Spanish
+
 
   @override
   Widget build(BuildContext context) {

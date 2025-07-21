@@ -19,7 +19,7 @@ class UserModel {
     };
   }
 
-  // Convert Map to object
+
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
         email: json['email'],

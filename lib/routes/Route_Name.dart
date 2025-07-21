@@ -6,4 +6,5 @@ class RoutesName {
   static const String pdf_route = "/pdf_screen";
   static const String camera_route = "/camera_screen";
   static const String camera= "/camera";
+  static const String forgetpass="/forgetpassword";
 }

@@ -57,17 +57,17 @@ class _SignupPageState extends State<SignupPage> {
             ),
             const SizedBox(height: 32),
 
-            // Name Field
+
             _buildTextField(controller: nameController, label: 'Name'),
 
             const SizedBox(height: 16),
 
-            // Email Field
+
             _buildTextField(controller: emailController, label: 'Email'),
 
             const SizedBox(height: 16),
 
-            // Password Field
+
             _buildTextField(
                 controller: passwordController,
                 label: 'Password',

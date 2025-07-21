@@ -1,32 +1,27 @@
 import 'package:camera_ocr_scanner/constants/App_Colors.dart';
-import 'package:camera_ocr_scanner/models/UserModel.dart';
-import 'package:camera_ocr_scanner/routes/Route_Name.dart';
-import 'package:camera_ocr_scanner/services/SharedPrefenceService.dart';
 import 'package:camera_ocr_scanner/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import '../services/NavigatorServices.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class ForgotPasswordPage extends StatefulWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Login',
+        title: const Text('Forgot Password',
         style: TextStyle(
           color: Colors.white
         ),
-
         ),
         centerTitle: true,
         backgroundColor: AppColors.BackgroundColor,
@@ -39,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             const SizedBox(height: 40),
             Text(
-              'Welcome Back!',
+              'Reset Your Password',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -47,21 +42,13 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Login to continue',
+              'Enter your email and we’ll send reset instructions.',
               style: Theme.of(context).textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 40),
 
-
             _buildTextField(controller: emailController, label: 'Email'),
-
-            const SizedBox(height: 16),
-
-            _buildTextField(
-                controller: passwordController,
-                label: 'Password',
-                isPassword: true),
 
             const SizedBox(height: 30),
 
@@ -71,31 +58,22 @@ class _LoginPageState extends State<LoginPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                backgroundColor: AppColors.BackgroundColor,
+                backgroundColor:AppColors.BackgroundColor,
               ),
               onPressed: () {
+                String email = emailController.text.trim();
 
-                if(emailController.text.isEmpty && passwordController.text.isEmpty){
-                  showSnackBar(context, "detail missing  unsuccessful",
+                if (email.isEmpty) {
+                  showSnackBar(context, "Please enter your email.",
                       isSuccess: false);
+                } else {
+                  showSnackBar(
+                      context, "Password reset link sent to $email.");
+                  NavigatorServices.goBack();
                 }
-                else{
-                  bool success = SharedPrefencesService.setlogin(UserModel(
-                    email: emailController.text.trim(),
-                    password: passwordController.text.trim(),
-                  ));
-
-                  if (success) {
-                    NavigatorServices.GoTo(RoutesName.home_route);
-                  } else {
-                    showSnackBar(context, "No user found", isSuccess: false);
-                  }
-                }
-
-
               },
               child: const Text(
-                'Login',
+                'Send Reset Link',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,
                 color: Colors.white
                 ),
@@ -105,25 +83,12 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20),
 
             TextButton(
-
               onPressed: () {
-                NavigatorServices.NavigationTo(RoutesName.signup_route);
+                NavigatorServices.goBack();
               },
               child: const Text(
-                'Don\'t have an account? Sign Up',
-                style: TextStyle(color: Colors.blueAccent),
-              ),
-            ),
-            const SizedBox(height: 20),
-
-            TextButton(
-
-              onPressed: () {
-                NavigatorServices.NavigationTo(RoutesName.forgetpass);
-              },
-              child: const Text(
-                'Forget password',
-                style: TextStyle(color: Colors.blueAccent),
+                'Back to Login',
+                style: TextStyle(color: Colors.deepPurple,),
               ),
             ),
           ],
@@ -135,11 +100,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildTextField({
     required TextEditingController controller,
     required String label,
-    bool isPassword = false,
   }) {
     return TextField(
       controller: controller,
-      obscureText: isPassword,
       decoration: InputDecoration(
         labelText: label,
         filled: true,
